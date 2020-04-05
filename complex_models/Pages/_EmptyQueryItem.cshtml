@@ -1,0 +1,13 @@
+﻿
+@model complex_models.QueryMain
+@{
+    Layout = null;
+}
+
+<li>
+    @Html.TextBoxFor(m => m.Queries[0].Items[0].Id)
+    @Html.TextBoxFor(m => m.Queries[0].Items[0].Price)
+    @Html.TextBoxFor(m => m.Queries[0].Items[0].ProductName)
+
+    <input type="hidden" name="QueryMain.Queries[i].Items[j].Index" value="0" />
+</li>

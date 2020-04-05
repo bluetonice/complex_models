@@ -1,0 +1,29 @@
+﻿@page
+@model complex_models.Pages.NodeModel
+@{
+    Layout = null;
+}
+
+@using complex_models
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Node</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <ul id="tree">
+            @Html.EditorFor(m=>m.Node,"Node")
+            
+
+        </ul>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    }
+</body>
+</html>

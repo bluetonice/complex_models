@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <form method="post">
+        @for (int i = 0; i < Model.QueryMain.Queries.Count; i++)
+        {
+        <ul id="EmptyFormItem">
+            @Html.HiddenFor(m => m.QueryMain.Queries[i].Id)
+            @Html.TextBoxFor(m => m.QueryMain.Queries[i].AndOr)
+
+            <a class="btn btn-primary"
+               href="@Url.Page("Index","EmptyFilterPartial")"
+               if-ajax="true"
+               if-ajax-method="get"
+               if-ajax-insertion-mode="after"
+               if-ajax-update-id="EmptyFormItem">
+                +
+            </a>
+            <input type="hidden" name="QueryMain.Queries.Index" value="@i" />
+
+            @for (int j = 0; j < Model.QueryMain.Queries[i].Items.Count; j++)
+            {
+                <li>
+                    @Html.TextBoxFor(m => m.QueryMain.Queries[i].Items[j].Id)
+                    @Html.TextBoxFor(m => m.QueryMain.Queries[i].Items[j].Price)
+                    @Html.TextBoxFor(m => m.QueryMain.Queries[i].Items[j].ProductName)
+
+                    <input type="hidden" name="QueryMain.Queries[i].Items[j].Index" value="@j" />
+                </li>
+            }
+        </ul>
+        }
+
+
+        <input type="submit">
+
+    </form>
+</div>

@@ -1,0 +1,13 @@
+﻿@model complex_models.Node
+
+    <li>
+        @Html.EditorFor(x => x.Name)
+        @Html.HiddenIndexerInputForModel()
+        @if (Model.Children != null)
+        {
+            <ul>
+                @Html.EditorFor(x => x.Children)
+
+            </ul>
+        }
+    </li>
